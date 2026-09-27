@@ -19,3 +19,7 @@ Si ton API Node lit process.env.DATABASE_URL mais crash sur « undefined », vé
 ## 2026-09-26
 
 Sur ESP32, si ton programme redémarre en boucle dès que tu actives le WiFi ou un moteur, c'est presque toujours le brownout : l'USB du PC ne fournit pas assez de courant. Un condensateur de 470 µF soudé au plus près des broches 5V/GND, ou une vraie alim 5V/2A, règle le problème neuf fois sur dix.
+
+## 2026-09-27
+
+Sur ESP32, évite les delay() dans la loop() : chaque pause bloque tout le reste (capteurs, affichage, WiFi). Préfère un timer avec millis() : compare l'heure actuelle au dernier déclenchement et agis quand l'intervalle est écoulé. Le code reste réactif et tu peux gérer plusieurs tâches « en parallèle » sans RTOS.
