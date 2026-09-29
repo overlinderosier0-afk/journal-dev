@@ -23,3 +23,7 @@ Sur ESP32, si ton programme redémarre en boucle dès que tu actives le WiFi ou 
 ## 2026-09-27
 
 Sur ESP32, évite les delay() dans la loop() : chaque pause bloque tout le reste (capteurs, affichage, WiFi). Préfère un timer avec millis() : compare l'heure actuelle au dernier déclenchement et agis quand l'intervalle est écoulé. Le code reste réactif et tu peux gérer plusieurs tâches « en parallèle » sans RTOS.
+
+## 2026-09-29
+
+En production, sauvegarde ta base de données dès le premier jour, pas « quand le site marchera ». Un pg_dump chaque nuit en cron + une copie hors du serveur, c'est dix minutes à mettre en place — et ça sauve le projet le jour où un disque rend l'âme ou une migration tourne mal.
