@@ -27,3 +27,7 @@ Sur ESP32, évite les delay() dans la loop() : chaque pause bloque tout le reste
 ## 2026-09-29
 
 En production, sauvegarde ta base de données dès le premier jour, pas « quand le site marchera ». Un pg_dump chaque nuit en cron + une copie hors du serveur, c'est dix minutes à mettre en place — et ça sauve le projet le jour où un disque rend l'âme ou une migration tourne mal.
+
+## 2026-09-30
+
+Si ton app utilise Firebase, ne laisse jamais les règles par défaut en prod : « allow read, write: if true; » transforme ta base en base publique, et les bots la scannent en permanence. Écris des règles qui vérifient request.auth (et les champs exacts), puis teste-les avec le simulateur de règles avant de déployer. Une base ouverte, c'est la fuite la plus bête qui existe.
