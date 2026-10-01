@@ -31,3 +31,7 @@ En production, sauvegarde ta base de données dès le premier jour, pas « quand
 ## 2026-09-30
 
 Si ton app utilise Firebase, ne laisse jamais les règles par défaut en prod : « allow read, write: if true; » transforme ta base en base publique, et les bots la scannent en permanence. Écris des règles qui vérifient request.auth (et les champs exacts), puis teste-les avec le simulateur de règles avant de déployer. Une base ouverte, c'est la fuite la plus bête qui existe.
+
+## 2026-10-01
+
+En bug bounty, la recon passe avant l'attaque : cartographier la surface d'attaque (sous-domaines, endpoints, technologies) avec des moyens passifs avant de toucher à quoi que ce soit. La plupart des bons rapports naissent d'une bonne compréhension de l'appli, pas d'un scanner lancé à l'aveugle. Une heure de recon méthodique vaut mieux que trois heures de fuzzing au hasard.
