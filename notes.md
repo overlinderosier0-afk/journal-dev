@@ -35,3 +35,7 @@ Si ton app utilise Firebase, ne laisse jamais les règles par défaut en prod : 
 ## 2026-10-01
 
 En bug bounty, la recon passe avant l'attaque : cartographier la surface d'attaque (sous-domaines, endpoints, technologies) avec des moyens passifs avant de toucher à quoi que ce soit. La plupart des bons rapports naissent d'une bonne compréhension de l'appli, pas d'un scanner lancé à l'aveugle. Une heure de recon méthodique vaut mieux que trois heures de fuzzing au hasard.
+
+## 2026-10-02
+
+Sur ESP32, passer la puce en deep sleep entre deux mesures au lieu de la laisser tourner en boucle peut diviser la consommation par ~100. Avec esp_sleep_enable_timer_wakeup(), la puce se réveille toute seule à intervalle régulier — parfait pour un capteur sur batterie. Attention : en deep sleep, la RAM est coupée, donc il faut sauvegarder les données importantes en RTC memory ou en flash avant de dormir.
