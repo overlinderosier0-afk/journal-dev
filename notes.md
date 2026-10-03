@@ -39,3 +39,7 @@ En bug bounty, la recon passe avant l'attaque : cartographier la surface d'attaq
 ## 2026-10-02
 
 Sur ESP32, passer la puce en deep sleep entre deux mesures au lieu de la laisser tourner en boucle peut diviser la consommation par ~100. Avec esp_sleep_enable_timer_wakeup(), la puce se réveille toute seule à intervalle régulier — parfait pour un capteur sur batterie. Attention : en deep sleep, la RAM est coupée, donc il faut sauvegarder les données importantes en RTC memory ou en flash avant de dormir.
+
+## 2026-10-03
+
+Petit rappel git : préfère des commits petits et atomiques — un changement = un commit, avec un message qui dit ce que le commit change. « Corrige la validation du formulaire » plutôt que « fix stuff ». Un historique propre rend le débogage et le revert d'un bug beaucoup plus faciles.
