@@ -47,3 +47,7 @@ Petit rappel git : préfère des commits petits et atomiques — un changement =
 ## 2026-10-04
 
 En bug bounty, note toujours les en-têtes de sécurité HTTP manquants : Content-Security-Policy absent ou trop permissif, pas de X-Frame-Options, HSTS absent. Seuls, ces findings rapportent peu, mais combinés à une XSS ou un clickjacking sur une page sensible, ils transforment un refus en bounty. Vérifie-les pendant la recon passive, ça coûte 30 secondes avec curl -I.
+
+## 2026-10-05
+
+En React, pense toujours à nettoyer ton useEffect : le return du hook sert à couper les intervalles, les abonnements et les requêtes en cours. Sans ça, un composant démonté continue de tourner en tâche de fond et peut appeler l'API en boucle. Un intervalle oublié dans un useEffect, c'est une fuite mémoire garantie. Réflexe simple : à chaque effet qui « ouvre » quelque chose, écris tout de suite le code qui le « ferme ».
