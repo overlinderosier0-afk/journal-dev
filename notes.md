@@ -51,3 +51,7 @@ En bug bounty, note toujours les en-têtes de sécurité HTTP manquants : Conten
 ## 2026-10-05
 
 En React, pense toujours à nettoyer ton useEffect : le return du hook sert à couper les intervalles, les abonnements et les requêtes en cours. Sans ça, un composant démonté continue de tourner en tâche de fond et peut appeler l'API en boucle. Un intervalle oublié dans un useEffect, c'est une fuite mémoire garantie. Réflexe simple : à chaque effet qui « ouvre » quelque chose, écris tout de suite le code qui le « ferme ».
+
+## 2026-10-06
+
+Une IDOR, c'est quand une API renvoie les données d'un autre utilisateur juste parce qu'on a changé un ID dans l'URL. En bug bounty, le réflexe à tester en premier : créer deux comptes, puis rejouer chaque requête sensible avec l'ID du second. Une requête authentifiée n'est pas une requête autorisée — ne jamais supposer que le backend vérifie.
