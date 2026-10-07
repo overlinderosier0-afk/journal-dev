@@ -55,3 +55,7 @@ En React, pense toujours à nettoyer ton useEffect : le return du hook sert à c
 ## 2026-10-06
 
 Une IDOR, c'est quand une API renvoie les données d'un autre utilisateur juste parce qu'on a changé un ID dans l'URL. En bug bounty, le réflexe à tester en premier : créer deux comptes, puis rejouer chaque requête sensible avec l'ID du second. Une requête authentifiée n'est pas une requête autorisée — ne jamais supposer que le backend vérifie.
+
+## 2026-10-07
+
+Watchdog timer sur ESP32 : si ton code bloque (boucle infinie, Wi-Fi qui ne se connecte jamais), le Task Watchdog redémarre la puce automatiquement. Pense à nourrir le watchdog avec esp_task_wdt_reset() dans les boucles longues, et à configurer son timeout (CONFIG_ESP_TASK_WDT_TIMEOUT_S) selon ton pire cas d'exécution — un plantage silencieux au déploiement coûte bien plus cher qu'un redémarrage propre.
