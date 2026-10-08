@@ -59,3 +59,7 @@ Une IDOR, c'est quand une API renvoie les données d'un autre utilisateur juste 
 ## 2026-10-07
 
 Watchdog timer sur ESP32 : si ton code bloque (boucle infinie, Wi-Fi qui ne se connecte jamais), le Task Watchdog redémarre la puce automatiquement. Pense à nourrir le watchdog avec esp_task_wdt_reset() dans les boucles longues, et à configurer son timeout (CONFIG_ESP_TASK_WDT_TIMEOUT_S) selon ton pire cas d'exécution — un plantage silencieux au déploiement coûte bien plus cher qu'un redémarrage propre.
+
+## 2026-10-08
+
+git bisect, c'est le détective de git : tu lui dis qu'un commit est bon et un autre mauvais, et il te fait tester les commits intermédiaires un par un jusqu'à trouver exactement celui qui a introduit le bug. La prochaine fois qu'une régression arrive dans TiketHaiti, essaie « git bisect start » + « git bisect bad HEAD » + « git bisect good <commit> » — ça bat de loin la recherche manuelle.
