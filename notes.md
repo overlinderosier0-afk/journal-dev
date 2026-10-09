@@ -63,3 +63,7 @@ Watchdog timer sur ESP32 : si ton code bloque (boucle infinie, Wi-Fi qui ne se c
 ## 2026-10-08
 
 git bisect, c'est le détective de git : tu lui dis qu'un commit est bon et un autre mauvais, et il te fait tester les commits intermédiaires un par un jusqu'à trouver exactement celui qui a introduit le bug. La prochaine fois qu'une régression arrive dans TiketHaiti, essaie « git bisect start » + « git bisect bad HEAD » + « git bisect good <commit> » — ça bat de loin la recherche manuelle.
+
+## 2026-10-09
+
+Sur Arduino, une interruption (attachInterrupt) réagit à un événement matériel sans passer par loop() : parfait pour compter les impulsions d'un capteur ou réveiller le microcontrôleur d'un bouton. Garde le handler court — mets juste à jour une variable volatile, et fais le vrai traitement dans loop(). Un compteur volatil + une interruption propre vaut mieux qu'un polling rapide qui rate des événements.
