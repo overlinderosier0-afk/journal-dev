@@ -67,3 +67,7 @@ git bisect, c'est le détective de git : tu lui dis qu'un commit est bon et un a
 ## 2026-10-09
 
 Sur Arduino, une interruption (attachInterrupt) réagit à un événement matériel sans passer par loop() : parfait pour compter les impulsions d'un capteur ou réveiller le microcontrôleur d'un bouton. Garde le handler court — mets juste à jour une variable volatile, et fais le vrai traitement dans loop(). Un compteur volatil + une interruption propre vaut mieux qu'un polling rapide qui rate des événements.
+
+## 2026-10-10
+
+En Firebase, les règles de sécurité Firestore décident qui lit et écrit quoi — et en mode test ouvert, tout le monde peut tout lire. Pour un projet comme Universite Pro, une règle allow read, write: if request.auth != null && request.auth.uid == userId garantit que chaque étudiant ne touche qu'à ses propres données. Réflexe simple : n'ouvre que le strict nécessaire, et teste tes règles dans la console Firebase avant de déployer.
