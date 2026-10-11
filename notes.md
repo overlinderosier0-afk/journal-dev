@@ -71,3 +71,7 @@ Sur Arduino, une interruption (attachInterrupt) réagit à un événement matér
 ## 2026-10-10
 
 En Firebase, les règles de sécurité Firestore décident qui lit et écrit quoi — et en mode test ouvert, tout le monde peut tout lire. Pour un projet comme Universite Pro, une règle allow read, write: if request.auth != null && request.auth.uid == userId garantit que chaque étudiant ne touche qu'à ses propres données. Réflexe simple : n'ouvre que le strict nécessaire, et teste tes règles dans la console Firebase avant de déployer.
+
+## 2026-10-11
+
+Un endpoint qui ne répond jamais n'est pas forcément mort : un WAF peut *tarpiter* (ralentir volontairement) les requêtes suspectes pour décourager les scanners. Avant de classer une cible « down », reteste avec des requêtes propres, espacées, et depuis ton navigateur normal. Ça évite de rater une surface qui se défend juste bien.
