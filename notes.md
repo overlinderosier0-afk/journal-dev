@@ -75,3 +75,7 @@ En Firebase, les règles de sécurité Firestore décident qui lit et écrit quo
 ## 2026-10-11
 
 Un endpoint qui ne répond jamais n'est pas forcément mort : un WAF peut *tarpiter* (ralentir volontairement) les requêtes suspectes pour décourager les scanners. Avant de classer une cible « down », reteste avec des requêtes propres, espacées, et depuis ton navigateur normal. Ça évite de rater une surface qui se défend juste bien.
+
+## 2026-10-12
+
+Les clés d'API n'ont rien à faire dans le dépôt git. Une clé Resend, une clé privée Firebase ou un token GitHub doit vivre dans des variables d'environnement (un .env local, jamais commité) ou dans les secrets du service qui l'utilise. Avant chaque commit, un réflexe simple :  et un grep sur les préfixes sensibles (sk_, xoxp-, ghp_) — si un secret a déjà fuité, le révoquer et le remplacer, pas juste le retirer du fichier.
