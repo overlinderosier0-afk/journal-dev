@@ -80,3 +80,9 @@ Un endpoint qui ne répond jamais n'est pas forcément mort : un WAF peut *tarpi
 
 Les clés d'API n'ont rien à faire dans le dépôt git. Une clé Resend, une clé privée Firebase ou un token GitHub doit vivre dans des variables d'environnement (un .env local, jamais commité) ou dans les secrets du service qui l'utilise.
 Avant chaque commit, un réflexe simple : git diff, puis un grep sur les préfixes sensibles (sk_, xoxp-, ghp_) pour repérer ce qui a fuité. Si un secret a déjà fuité, le révoquer et le remplacer, pas juste le retirer du fichier.
+
+## 2026-10-13
+
+Les promesses JavaScript non gérées : un await sans try/catch, ou une promesse sans .catch(), et Node lève un unhandledRejection qui peut planter tout le process.
+En dev ça passe inaperçu, en prod ça réveille à 3h du matin.
+L'habitude à prendre : toujours try/catch autour des await, et un process.on('unhandledRejection') en filet de sécurité pour logger l'erreur proprement.
