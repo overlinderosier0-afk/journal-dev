@@ -86,3 +86,7 @@ Avant chaque commit, un réflexe simple : git diff, puis un grep sur les préfix
 Les promesses JavaScript non gérées : un await sans try/catch, ou une promesse sans .catch(), et Node lève un unhandledRejection qui peut planter tout le process.
 En dev ça passe inaperçu, en prod ça réveille à 3h du matin.
 L'habitude à prendre : toujours try/catch autour des await, et un process.on('unhandledRejection') en filet de sécurité pour logger l'erreur proprement.
+
+## 2026-10-14
+
+Sur ESP32, toutes les GPIO ne sont pas équivalentes au démarrage : les « strapping pins » (GPIO0, 2, 5, 12, 15...) sont lues par la puce au boot pour choisir son mode. GPIO12 par exemple doit rester au niveau bas : si un capteur la tire au haut pendant le reset, la puce peut refuser de démarrer. Réflexe avant de câbler un capteur : vérifier le rôle de la broche au boot, et privilégier des GPIO « sûres » comme 13, 14, 25, 26 ou 27.
