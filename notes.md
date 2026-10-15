@@ -90,3 +90,7 @@ L'habitude à prendre : toujours try/catch autour des await, et un process.on('u
 ## 2026-10-14
 
 Sur ESP32, toutes les GPIO ne sont pas équivalentes au démarrage : les « strapping pins » (GPIO0, 2, 5, 12, 15...) sont lues par la puce au boot pour choisir son mode. GPIO12 par exemple doit rester au niveau bas : si un capteur la tire au haut pendant le reset, la puce peut refuser de démarrer. Réflexe avant de câbler un capteur : vérifier le rôle de la broche au boot, et privilégier des GPIO « sûres » comme 13, 14, 25, 26 ou 27.
+
+## 2026-10-15
+
+En bug bounty, quand un endpoint répond 429 (Too Many Requests), c'est un signal : la cible a un rate limit en place. Le bon réflexe : espacer les requêtes, respecter le header Retry-After, et ne jamais contourner en forçant le rythme. Forcer, c'est risquer un blocage de compte — ou pire, un mini-DoS, ce qui est hors-scope de quasiment tous les programmes.
