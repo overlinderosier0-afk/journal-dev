@@ -94,3 +94,7 @@ Sur ESP32, toutes les GPIO ne sont pas équivalentes au démarrage : les « stra
 ## 2026-10-15
 
 En bug bounty, quand un endpoint répond 429 (Too Many Requests), c'est un signal : la cible a un rate limit en place. Le bon réflexe : espacer les requêtes, respecter le header Retry-After, et ne jamais contourner en forçant le rythme. Forcer, c'est risquer un blocage de compte — ou pire, un mini-DoS, ce qui est hors-scope de quasiment tous les programmes.
+
+## 2026-10-16
+
+git reflog, c'est le filet de sécurité de git : même un commit « perdu » après un reset --hard ou un rebase reste visible dans le journal des refs. Un git reflog, puis git checkout ou git reset sur le bon SHA, et le travail « effacé » revient. Réflexe simple : avant de paniquer après une fausse manip, regarde le reflog — git n'oublie presque jamais rien.
