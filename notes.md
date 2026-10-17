@@ -98,3 +98,7 @@ En bug bounty, quand un endpoint répond 429 (Too Many Requests), c'est un signa
 ## 2026-10-16
 
 git reflog, c'est le filet de sécurité de git : même un commit « perdu » après un reset --hard ou un rebase reste visible dans le journal des refs. Un git reflog, puis git checkout ou git reset sur le bon SHA, et le travail « effacé » revient. Réflexe simple : avant de paniquer après une fausse manip, regarde le reflog — git n'oublie presque jamais rien.
+
+## 2026-10-17
+
+Sur l'ESP32, un servo qui tourne et la carte qui redémarre en boucle : c'est souvent le brownout. Le servo tire trop de courant en pointe et la tension s'effondre. La bonne pratique : alimenter les servos avec une alim 5 V séparée, relier les masses (GND) en commun avec l'ESP32, et ajouter un gros condensateur (470–1000 µF) aux bornes de l'alimentation pour lisser les pics. Un seul test à la fois, et les hypothèses restent des hypothèses.
