@@ -102,3 +102,7 @@ git reflog, c'est le filet de sécurité de git : même un commit « perdu » ap
 ## 2026-10-17
 
 Sur l'ESP32, un servo qui tourne et la carte qui redémarre en boucle : c'est souvent le brownout. Le servo tire trop de courant en pointe et la tension s'effondre. La bonne pratique : alimenter les servos avec une alim 5 V séparée, relier les masses (GND) en commun avec l'ESP32, et ajouter un gros condensateur (470–1000 µF) aux bornes de l'alimentation pour lisser les pics. Un seul test à la fois, et les hypothèses restent des hypothèses.
+
+## 2026-10-18
+
+En audit de code, chaque bug que tu trouves mérite sa règle Semgrep maison : le pattern devient un test de régression automatique que tu relances sur tout le codebase et sur tes futurs audits. Commence par les règles simples (mode 'search' sur une API dangereuse), puis passe au taint mode pour suivre le flux des données. Une règle qui détecte le bug hier te fera gagner des heures demain.
