@@ -106,3 +106,7 @@ Sur l'ESP32, un servo qui tourne et la carte qui redémarre en boucle : c'est so
 ## 2026-10-18
 
 En audit de code, chaque bug que tu trouves mérite sa règle Semgrep maison : le pattern devient un test de régression automatique que tu relances sur tout le codebase et sur tes futurs audits. Commence par les règles simples (mode 'search' sur une API dangereuse), puis passe au taint mode pour suivre le flux des données. Une règle qui détecte le bug hier te fera gagner des heures demain.
+
+## 2026-10-19
+
+Avec Next.js, tout ce qui commence par NEXT_PUBLIC_ finit dans le bundle JavaScript envoyé au navigateur. Ne jamais y mettre une clé Resend, une clé Firebase Admin ou un token privé : tout le monde peut les lire avec les devtools. Les secrets vivent dans des variables serveur (sans préfixe), lues côté API routes ou server components uniquement. Un grep rapide sur « NEXT_PUBLIC_ » avant chaque mise en prod vaut son pesant d'or.
