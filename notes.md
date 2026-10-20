@@ -110,3 +110,7 @@ En audit de code, chaque bug que tu trouves mérite sa règle Semgrep maison : l
 ## 2026-10-19
 
 Avec Next.js, tout ce qui commence par NEXT_PUBLIC_ finit dans le bundle JavaScript envoyé au navigateur. Ne jamais y mettre une clé Resend, une clé Firebase Admin ou un token privé : tout le monde peut les lire avec les devtools. Les secrets vivent dans des variables serveur (sans préfixe), lues côté API routes ou server components uniquement. Un grep rapide sur « NEXT_PUBLIC_ » avant chaque mise en prod vaut son pesant d'or.
+
+## 2026-10-20
+
+Quand un écran OLED reste noir sur l'ESP32, premier réflexe : un scan I2C. Balayer les adresses de 0x01 à 0x7F et afficher celles qui répondent sur le port série prend une minute, et tranche net entre « mauvais câblage SDA/SCL » et « écran mort ». Astuce : note l'adresse détectée (souvent 0x3C ou 0x3D) au lieu de la deviner dans le code.
