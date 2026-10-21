@@ -114,3 +114,7 @@ Avec Next.js, tout ce qui commence par NEXT_PUBLIC_ finit dans le bundle JavaScr
 ## 2026-10-20
 
 Quand un écran OLED reste noir sur l'ESP32, premier réflexe : un scan I2C. Balayer les adresses de 0x01 à 0x7F et afficher celles qui répondent sur le port série prend une minute, et tranche net entre « mauvais câblage SDA/SCL » et « écran mort ». Astuce : note l'adresse détectée (souvent 0x3C ou 0x3D) au lieu de la deviner dans le code.
+
+## 2026-10-21
+
+Une des premières vérifs en recon bug bounty : les sous-domaines qui pointent vers des services externes abandonnés (S3, Heroku, GitHub Pages...). Si le CNAME DNS existe encore mais que le service est supprimé, n'importe qui peut réclamer le nom et prendre le contrôle du sous-domaine. dnsx + une liste de signatures connues pour scanner, et toujours vérifier à la main avant de rapporter — les faux positifs sont fréquents.
