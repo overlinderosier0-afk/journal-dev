@@ -118,3 +118,9 @@ Quand un écran OLED reste noir sur l'ESP32, premier réflexe : un scan I2C. Bal
 ## 2026-10-21
 
 Une des premières vérifs en recon bug bounty : les sous-domaines qui pointent vers des services externes abandonnés (S3, Heroku, GitHub Pages...). Si le CNAME DNS existe encore mais que le service est supprimé, n'importe qui peut réclamer le nom et prendre le contrôle du sous-domaine. dnsx + une liste de signatures connues pour scanner, et toujours vérifier à la main avant de rapporter — les faux positifs sont fréquents.
+
+## 2026-10-22
+
+Une entrée GPIO qui n'est branchée à rien ne vaut ni 0 ni 1 : elle flotte et capte les parasites autour d'elle.
+Sur ESP32 comme sur Arduino, les boutons-poussoirs se déclarent en INPUT_PULLUP (pas INPUT), et on lit 0 quand le bouton est pressé, 1 quand il est relâché.
+Ça évite les lectures fantômes qui rendent un joystick ou un bouton complètement imprévisible au débogage.
