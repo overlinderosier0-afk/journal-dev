@@ -124,3 +124,7 @@ Une des premières vérifs en recon bug bounty : les sous-domaines qui pointent 
 Une entrée GPIO qui n'est branchée à rien ne vaut ni 0 ni 1 : elle flotte et capte les parasites autour d'elle.
 Sur ESP32 comme sur Arduino, les boutons-poussoirs se déclarent en INPUT_PULLUP (pas INPUT), et on lit 0 quand le bouton est pressé, 1 quand il est relâché.
 Ça évite les lectures fantômes qui rendent un joystick ou un bouton complètement imprévisible au débogage.
+
+## 2026-10-23
+
+Note : piloter un servo (MG90S) depuis un ESP32, le bon câblage. Ne jamais alimenter le servo sur le 3,3 V de la carte : en pointe il tire plusieurs centaines de mA et la carte reboot (brownout). Aliment externe 5 V dédiée, masse commune avec l'ESP32, et signal PWM 50 Hz sur la broche : impulsion 1 ms = 0°, 1,5 ms = 90°, 2 ms = 180°. Avec ledcWrite, la même constante de fréquence partout.
