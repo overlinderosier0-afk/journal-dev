@@ -128,3 +128,7 @@ Sur ESP32 comme sur Arduino, les boutons-poussoirs se déclarent en INPUT_PULLUP
 ## 2026-10-23
 
 Note : piloter un servo (MG90S) depuis un ESP32, le bon câblage. Ne jamais alimenter le servo sur le 3,3 V de la carte : en pointe il tire plusieurs centaines de mA et la carte reboot (brownout). Aliment externe 5 V dédiée, masse commune avec l'ESP32, et signal PWM 50 Hz sur la broche : impulsion 1 ms = 0°, 1,5 ms = 90°, 2 ms = 180°. Avec ledcWrite, la même constante de fréquence partout.
+
+## 2026-10-24
+
+En JavaScript, quand une requête fetch peut devenir inutile (changement de page, nouvelle recherche tapée avant la fin de la précédente), passe un signal AbortController : controller.abort() annule la requête en cours. Ça évite d'afficher une réponse obsolète ou de mettre à jour un composant déjà démonté. Pense à ignorer proprement l'erreur AbortError dans le catch, ce n'est pas un vrai échec.
