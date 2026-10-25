@@ -132,3 +132,7 @@ Note : piloter un servo (MG90S) depuis un ESP32, le bon câblage. Ne jamais alim
 ## 2026-10-24
 
 En JavaScript, quand une requête fetch peut devenir inutile (changement de page, nouvelle recherche tapée avant la fin de la précédente), passe un signal AbortController : controller.abort() annule la requête en cours. Ça évite d'afficher une réponse obsolète ou de mettre à jour un composant déjà démonté. Pense à ignorer proprement l'erreur AbortError dans le catch, ce n'est pas un vrai échec.
+
+## 2026-10-25
+
+En React, un useEffect qui lance un fetch sans cleanup peut laisser une requête en cours après le démontage du composant — et en StrictMode, l'effet tourne deux fois en dev. Bonne habitude : utiliser un AbortController et annuler la requête dans le return de l'effet. Ça évite les warnings « state update on unmounted component » et les données d'une vieille requête qui écrasent les nouvelles.
