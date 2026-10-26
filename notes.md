@@ -136,3 +136,7 @@ En JavaScript, quand une requête fetch peut devenir inutile (changement de page
 ## 2026-10-25
 
 En React, un useEffect qui lance un fetch sans cleanup peut laisser une requête en cours après le démontage du composant — et en StrictMode, l'effet tourne deux fois en dev. Bonne habitude : utiliser un AbortController et annuler la requête dans le return de l'effet. Ça évite les warnings « state update on unmounted component » et les données d'une vieille requête qui écrasent les nouvelles.
+
+## 2026-10-26
+
+En bug bounty, un IDOR se teste simplement : reprends une requête qui affiche tes propres données, puis change juste l'identifiant dans l'URL ou le corps. Si le serveur te renvoie les données d'un autre utilisateur sans vérifier que c'est bien toi, c'est une faille. Retiens la règle : l'autorisation se vérifie côté serveur, jamais côté client.
