@@ -140,3 +140,7 @@ En React, un useEffect qui lance un fetch sans cleanup peut laisser une requête
 ## 2026-10-26
 
 En bug bounty, un IDOR se teste simplement : reprends une requête qui affiche tes propres données, puis change juste l'identifiant dans l'URL ou le corps. Si le serveur te renvoie les données d'un autre utilisateur sans vérifier que c'est bien toi, c'est une faille. Retiens la règle : l'autorisation se vérifie côté serveur, jamais côté client.
+
+## 2026-10-27
+
+Avant de mettre à jour une dépendance, surtout pour un correctif de sécurité, je lis le changelog et je teste en local : une mise à jour peut casser autre chose. Je mets à jour, je lance le projet et je vérifie les fonctions importantes, puis seulement je déploie. Et je garde le fichier de verrouillage (package-lock.json) versionné, pour que tout le monde installe exactement les mêmes versions.
