@@ -144,3 +144,9 @@ En bug bounty, un IDOR se teste simplement : reprends une requête qui affiche t
 ## 2026-10-27
 
 Avant de mettre à jour une dépendance, surtout pour un correctif de sécurité, je lis le changelog et je teste en local : une mise à jour peut casser autre chose. Je mets à jour, je lance le projet et je vérifie les fonctions importantes, puis seulement je déploie. Et je garde le fichier de verrouillage (package-lock.json) versionné, pour que tout le monde installe exactement les mêmes versions.
+
+## 2026-10-28
+
+Un bon rapport de vulnérabilité se lit en deux minutes : titre clair, impact concret, puis les étapes exactes pour reproduire le problème.
+Ajoute une preuve minimale (requête, capture d'écran) et une piste de correction, sans exagérer la sévérité.
+Un rapport propre et vérifiable se fait corriger plus vite qu'un rapport alarmiste.
