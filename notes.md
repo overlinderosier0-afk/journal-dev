@@ -150,3 +150,7 @@ Avant de mettre à jour une dépendance, surtout pour un correctif de sécurité
 Un bon rapport de vulnérabilité se lit en deux minutes : titre clair, impact concret, puis les étapes exactes pour reproduire le problème.
 Ajoute une preuve minimale (requête, capture d'écran) et une piste de correction, sans exagérer la sévérité.
 Un rapport propre et vérifiable se fait corriger plus vite qu'un rapport alarmiste.
+
+## 2026-10-29
+
+Sur ESP32/Arduino, ne jamais décider sur une seule lecture analogique : le bruit fait sauter les valeurs d'une mesure à l'autre. Prendre plusieurs lectures d'affilée et garder la moyenne (ou la médiane) avant de comparer à un seuil. Ça stabilise un joystick, un capteur de lumière ou de température, et ça évite les déclenchements fantômes dans la loop().
