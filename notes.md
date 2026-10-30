@@ -154,3 +154,9 @@ Un rapport propre et vérifiable se fait corriger plus vite qu'un rapport alarmi
 ## 2026-10-29
 
 Sur ESP32/Arduino, ne jamais décider sur une seule lecture analogique : le bruit fait sauter les valeurs d'une mesure à l'autre. Prendre plusieurs lectures d'affilée et garder la moyenne (ou la médiane) avant de comparer à un seuil. Ça stabilise un joystick, un capteur de lumière ou de température, et ça évite les déclenchements fantômes dans la loop().
+
+## 2026-10-30
+
+Sur ESP32/Arduino, éviter delay() dans loop() quand on doit faire plusieurs choses à la fois : delay() bloque tout le programme.
+Mieux vaut utiliser millis() : on mémorise le dernier moment d'action et on compare l'écart écoulé, pendant que le reste du code continue de tourner.
+Avec des variables unsigned long, la soustraction gère même le retour à zéro de millis() après environ 49 jours, sans cas particulier à ajouter.
