@@ -160,3 +160,7 @@ Sur ESP32/Arduino, ne jamais décider sur une seule lecture analogique : le brui
 Sur ESP32/Arduino, éviter delay() dans loop() quand on doit faire plusieurs choses à la fois : delay() bloque tout le programme.
 Mieux vaut utiliser millis() : on mémorise le dernier moment d'action et on compare l'écart écoulé, pendant que le reste du code continue de tourner.
 Avec des variables unsigned long, la soustraction gère même le retour à zéro de millis() après environ 49 jours, sans cas particulier à ajouter.
+
+## 2026-10-31
+
+Ne stocke jamais un token d'authentification dans localStorage : n'importe quel script injecté (XSS) peut le lire. Préfère un cookie httpOnly + SameSite, que JavaScript ne peut pas toucher. Et côté front, ne te fie jamais à ce qui est caché dans l'interface pour protéger une donnée : la vraie protection se joue côté serveur.
