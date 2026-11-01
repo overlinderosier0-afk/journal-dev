@@ -164,3 +164,9 @@ Avec des variables unsigned long, la soustraction gère même le retour à zéro
 ## 2026-10-31
 
 Ne stocke jamais un token d'authentification dans localStorage : n'importe quel script injecté (XSS) peut le lire. Préfère un cookie httpOnly + SameSite, que JavaScript ne peut pas toucher. Et côté front, ne te fie jamais à ce qui est caché dans l'interface pour protéger une donnée : la vraie protection se joue côté serveur.
+
+## 2026-11-01
+
+Un secret commité dans Git reste dans l'historique même si on le supprime du fichier ensuite : il faut le révoquer et le régénérer, pas juste l'effacer.
+Avant de commiter, vérifier avec git status et git diff ce qui part vraiment, et garder les clés dans un fichier .env listé dans .gitignore.
+Une clé exposée publiquement doit être considérée comme compromise, même si personne ne semble l'avoir utilisée.
