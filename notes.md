@@ -174,3 +174,7 @@ Une clé exposée publiquement doit être considérée comme compromise, même s
 ## 2026-11-02
 
 Sur ESP32, pour garder un réglage après un redémarrage, la bibliothèque Preferences (stockage NVS) est plus simple et plus fiable que l'EEPROM classique : on ouvre un espace de noms, on lit et on écrit des valeurs typées, puis on ferme. Penser à appeler end() après l'écriture, et à ne pas écrire en boucle dans loop() : la mémoire flash s'use à force d'écritures. Pour une valeur qui change souvent, mieux vaut la garder en RAM et ne la sauvegarder qu'au moment utile, par exemple quand l'utilisateur valide un réglage.
+
+## 2026-11-03
+
+Avec Firebase, les règles de sécurité Firestore sont la vraie protection, pas le code côté client : par défaut, tout accès est refusé, et il faut ouvrir explicitement chaque lecture et écriture, par exemple en vérifiant que request.auth.uid correspond à l'utilisateur concerné. Ne jamais laisser allow read, write: if true en production, et tester les règles avec l'émulateur avant de déployer.
