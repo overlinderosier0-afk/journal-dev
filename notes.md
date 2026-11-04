@@ -178,3 +178,9 @@ Sur ESP32, pour garder un réglage après un redémarrage, la bibliothèque Pref
 ## 2026-11-03
 
 Avec Firebase, les règles de sécurité Firestore sont la vraie protection, pas le code côté client : par défaut, tout accès est refusé, et il faut ouvrir explicitement chaque lecture et écriture, par exemple en vérifiant que request.auth.uid correspond à l'utilisateur concerné. Ne jamais laisser allow read, write: if true en production, et tester les règles avec l'émulateur avant de déployer.
+
+## 2026-11-04
+
+En bug bounty, un 403 ne veut pas toujours dire « accès impossible » : avant de conclure, on teste (sur une cible autorisée) les variantes simples — slash final, encodage de caractères, en-têtes comme X-Original-URL — car certaines règles sont appliquées sur l'URL brute et pas sur l'URL normalisée.
+Si une variante répond 200, on vérifie que le contenu est bien celui de la page protégée et pas une page d'erreur générique, puis on note la requête exacte qui a fonctionné.
+Un 403 contourné sans preuve du contenu protégé, ce n'est pas une vulnérabilité : c'est juste une réponse différente.
