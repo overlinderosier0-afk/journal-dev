@@ -188,3 +188,7 @@ Un 403 contourné sans preuve du contenu protégé, ce n'est pas une vulnérabil
 ## 2026-11-05
 
 Avant de pousser une branche, un git rebase -i HEAD~3 permet de nettoyer l'historique : regrouper les petits commits de correction (squash), reformuler les messages flous et garder une branche lisible. On ne rebase jamais une branche déjà partagée avec d'autres, sinon on réécrit l'historique de tout le monde. Un historique propre, c'est une revue de code plus rapide et un git log qui raconte vraiment ce qui a changé.
+
+## 2026-11-06
+
+Quand un champ de recherche déclenche une requête à chaque frappe, on gaspille des appels et on ralentit l'interface. Un debounce attend que l'utilisateur arrête de taper (par exemple 300 ms) avant de lancer la recherche, avec un simple setTimeout qu'on annule à chaque nouvelle frappe. C'est un petit bout de code, mais il change vraiment la fluidité d'une page comme une recherche de modèles ou d'événements.
