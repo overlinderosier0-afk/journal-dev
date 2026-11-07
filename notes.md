@@ -192,3 +192,7 @@ Avant de pousser une branche, un git rebase -i HEAD~3 permet de nettoyer l'histo
 ## 2026-11-06
 
 Quand un champ de recherche déclenche une requête à chaque frappe, on gaspille des appels et on ralentit l'interface. Un debounce attend que l'utilisateur arrête de taper (par exemple 300 ms) avant de lancer la recherche, avec un simple setTimeout qu'on annule à chaque nouvelle frappe. C'est un petit bout de code, mais il change vraiment la fluidité d'une page comme une recherche de modèles ou d'événements.
+
+## 2026-11-07
+
+En sécurité des IA, l'injection indirecte de prompt arrive quand un modèle lit du contenu non fiable (page web, document, email) et le traite comme une instruction au lieu d'une donnée. Le réflexe : séparer ce que l'utilisateur demande de ce que le contenu externe affirme, et ne jamais laisser une donnée déclencher une action (envoi, suppression, partage) sans validation explicite. Pour tester, on commence par le cas simple — un texte qui demande au modèle d'agir — puis on observe s'il y a un vrai effet, pas juste une réponse modifiée.
