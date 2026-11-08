@@ -196,3 +196,7 @@ Quand un champ de recherche déclenche une requête à chaque frappe, on gaspill
 ## 2026-11-07
 
 En sécurité des IA, l'injection indirecte de prompt arrive quand un modèle lit du contenu non fiable (page web, document, email) et le traite comme une instruction au lieu d'une donnée. Le réflexe : séparer ce que l'utilisateur demande de ce que le contenu externe affirme, et ne jamais laisser une donnée déclencher une action (envoi, suppression, partage) sans validation explicite. Pour tester, on commence par le cas simple — un texte qui demande au modèle d'agir — puis on observe s'il y a un vrai effet, pas juste une réponse modifiée.
+
+## 2026-11-08
+
+Avec Firebase, les règles de sécurité Firestore sont la vraie porte d'entrée de ta base : par défaut tout accès est refusé, et c'est à toi d'ouvrir précisément ce qu'il faut, collection par collection. Une règle trop large comme allow read, write: if true; expose toute la base à n'importe qui. Vérifie toujours tes règles dans l'onglet Rules de la console, et teste avec un compte non admin avant de déployer.
