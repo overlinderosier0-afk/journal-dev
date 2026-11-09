@@ -200,3 +200,7 @@ En sécurité des IA, l'injection indirecte de prompt arrive quand un modèle li
 ## 2026-11-08
 
 Avec Firebase, les règles de sécurité Firestore sont la vraie porte d'entrée de ta base : par défaut tout accès est refusé, et c'est à toi d'ouvrir précisément ce qu'il faut, collection par collection. Une règle trop large comme allow read, write: if true; expose toute la base à n'importe qui. Vérifie toujours tes règles dans l'onglet Rules de la console, et teste avec un compte non admin avant de déployer.
+
+## 2026-11-09
+
+Un bouton branché sur une entrée sans résistance de pull-up reste « flottant » : il lit au hasard HIGH ou LOW selon le bruit ambiant, d'où des déclenchements fantômes. Sur Arduino/ESP32, pinMode(pin, INPUT_PULLUP) active la résistance interne et le bouton tire l'entrée à LOW quand on appuie : il suffit de tester l'état inverse. Simple, sans composant externe, et ça évite bien des bugs bizarres sur les joysticks et les menus.
