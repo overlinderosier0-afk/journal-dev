@@ -204,3 +204,7 @@ Avec Firebase, les règles de sécurité Firestore sont la vraie porte d'entrée
 ## 2026-11-09
 
 Un bouton branché sur une entrée sans résistance de pull-up reste « flottant » : il lit au hasard HIGH ou LOW selon le bruit ambiant, d'où des déclenchements fantômes. Sur Arduino/ESP32, pinMode(pin, INPUT_PULLUP) active la résistance interne et le bouton tire l'entrée à LOW quand on appuie : il suffit de tester l'état inverse. Simple, sans composant externe, et ça évite bien des bugs bizarres sur les joysticks et les menus.
+
+## 2026-11-10
+
+Avant chaque session de bug bounty, relire la portée du programme : seuls les domaines et applis listés sont autorisés. Tester hors scope, c'est risquer un bannissement et perdre ses récompenses. Un coup d'œil à la page des règles et noter les cibles in-scope avant de commencer évite les mauvaises surprises.
