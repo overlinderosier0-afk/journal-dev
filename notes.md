@@ -208,3 +208,7 @@ Un bouton branché sur une entrée sans résistance de pull-up reste « flottant
 ## 2026-11-10
 
 Avant chaque session de bug bounty, relire la portée du programme : seuls les domaines et applis listés sont autorisés. Tester hors scope, c'est risquer un bannissement et perdre ses récompenses. Un coup d'œil à la page des règles et noter les cibles in-scope avant de commencer évite les mauvaises surprises.
+
+## 2026-11-11
+
+Avec fetch, un code 404 ou 500 ne rejette pas la promesse : il faut toujours vérifier response.ok avant d'appeler response.json(), sinon on traite une page d'erreur comme des données valides. Un simple if (!response.ok) throw new Error(...) suffit à éviter des bugs silencieux et des plantages incompréhensibles côté interface.
