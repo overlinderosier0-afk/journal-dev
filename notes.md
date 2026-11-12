@@ -212,3 +212,7 @@ Avant chaque session de bug bounty, relire la portée du programme : seuls les d
 ## 2026-11-11
 
 Avec fetch, un code 404 ou 500 ne rejette pas la promesse : il faut toujours vérifier response.ok avant d'appeler response.json(), sinon on traite une page d'erreur comme des données valides. Un simple if (!response.ok) throw new Error(...) suffit à éviter des bugs silencieux et des plantages incompréhensibles côté interface.
+
+## 2026-11-12
+
+En bug bounty, tester le rate limiting d'un login ou d'un OTP, c'est compter les tentatives avant le blocage : un endpoint qui accepte 50 codes d'affilée sans ralentir ni bloquer est un vrai signal. Regarder aussi si le compteur se réinitialise en changeant d'IP, de session ou juste en ajoutant un en-tête, et noter la réponse exacte (200, 429, message d'erreur) pour chaque seuil franchi.
