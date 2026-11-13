@@ -216,3 +216,7 @@ Avec fetch, un code 404 ou 500 ne rejette pas la promesse : il faut toujours vé
 ## 2026-11-12
 
 En bug bounty, tester le rate limiting d'un login ou d'un OTP, c'est compter les tentatives avant le blocage : un endpoint qui accepte 50 codes d'affilée sans ralentir ni bloquer est un vrai signal. Regarder aussi si le compteur se réinitialise en changeant d'IP, de session ou juste en ajoutant un en-tête, et noter la réponse exacte (200, 429, message d'erreur) pour chaque seuil franchi.
+
+## 2026-11-13
+
+git stash, c'est le tiroir temporaire du travail en cours : un  met de côté les modifications non commitées et remet l'arbre propre, parfait quand il faut changer de branche en urgence ou tester quelque chose sans perdre son brouillon. On retrouve le tout avec , et  montre ce qui attend. Penser à nommer ses stash () : après trois stash anonymes, on ne sait plus lequel contient quoi.
