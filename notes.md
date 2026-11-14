@@ -220,3 +220,7 @@ En bug bounty, tester le rate limiting d'un login ou d'un OTP, c'est compter les
 ## 2026-11-13
 
 git stash, c'est le tiroir temporaire du travail en cours : un  met de côté les modifications non commitées et remet l'arbre propre, parfait quand il faut changer de branche en urgence ou tester quelque chose sans perdre son brouillon. On retrouve le tout avec , et  montre ce qui attend. Penser à nommer ses stash () : après trois stash anonymes, on ne sait plus lequel contient quoi.
+
+## 2026-11-14
+
+Quand une recherche tape dans une API à chaque touche, on debounce : on attend environ 300 ms après la dernière frappe avant d'envoyer la requête. En React, ça se fait avec un setTimeout nettoyé dans le useEffect (clearTimeout au retour), ce qui évite aussi les appels en double. Résultat : moins de requêtes, une interface plus réactive et un backend moins sollicité.
