@@ -224,3 +224,7 @@ git stash, c'est le tiroir temporaire du travail en cours : un  met de côté le
 ## 2026-11-14
 
 Quand une recherche tape dans une API à chaque touche, on debounce : on attend environ 300 ms après la dernière frappe avant d'envoyer la requête. En React, ça se fait avec un setTimeout nettoyé dans le useEffect (clearTimeout au retour), ce qui évite aussi les appels en double. Résultat : moins de requêtes, une interface plus réactive et un backend moins sollicité.
+
+## 2026-11-15
+
+Sur un ESP32 qui doit rester connecté en Wi-Fi (scanner, capteur, petit serveur), ne pas bloquer le code dans une boucle while qui attend la connexion : si le réseau tombe, tout le programme s'arrête. Mieux : activer la reconnexion automatique avec WiFi.setAutoReconnect(true) et écouter les événements WiFi (WiFi.onEvent) pour savoir quand on est déconnecté ou reconnecté. Le programme continue de tourner, et la connexion revient toute seule quand le réseau est de retour.
