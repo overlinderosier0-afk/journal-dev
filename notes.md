@@ -228,3 +228,7 @@ Quand une recherche tape dans une API à chaque touche, on debounce : on attend 
 ## 2026-11-15
 
 Sur un ESP32 qui doit rester connecté en Wi-Fi (scanner, capteur, petit serveur), ne pas bloquer le code dans une boucle while qui attend la connexion : si le réseau tombe, tout le programme s'arrête. Mieux : activer la reconnexion automatique avec WiFi.setAutoReconnect(true) et écouter les événements WiFi (WiFi.onEvent) pour savoir quand on est déconnecté ou reconnecté. Le programme continue de tourner, et la connexion revient toute seule quand le réseau est de retour.
+
+## 2026-11-16
+
+Ne jamais mettre une clé API, un mot de passe ou un token directement dans le code, même dans un repo privé : ça finit toujours par fuiter (copie, capture d'écran, repo rendu public un jour). Les mettre dans un fichier .env, ajouté au .gitignore, et les lire via process.env. Et si une clé a déjà été collée quelque part (chat, commit, capture), la révoquer et en générer une nouvelle : la retirer du code ne suffit pas, elle reste dans l'historique.
