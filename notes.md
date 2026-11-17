@@ -232,3 +232,7 @@ Sur un ESP32 qui doit rester connecté en Wi-Fi (scanner, capteur, petit serveur
 ## 2026-11-16
 
 Ne jamais mettre une clé API, un mot de passe ou un token directement dans le code, même dans un repo privé : ça finit toujours par fuiter (copie, capture d'écran, repo rendu public un jour). Les mettre dans un fichier .env, ajouté au .gitignore, et les lire via process.env. Et si une clé a déjà été collée quelque part (chat, commit, capture), la révoquer et en générer une nouvelle : la retirer du code ne suffit pas, elle reste dans l'historique.
+
+## 2026-11-17
+
+En bug bounty, tester une XSS réfléchie commence par un paramètre d'URL simple : injecter une chaîne inoffensive dans un champ de recherche et voir si elle est renvoyée sans échappement. Vérifier dans quel contexte elle atterrit (HTML, attribut ou JavaScript) avant de conclure, car l'échappement dépend du contexte. Ne jamais utiliser de payload destructeur ni tester sur les données d'autres utilisateurs : un PoC minimal suffit pour le rapport.
