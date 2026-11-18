@@ -236,3 +236,7 @@ Ne jamais mettre une clé API, un mot de passe ou un token directement dans le c
 ## 2026-11-17
 
 En bug bounty, tester une XSS réfléchie commence par un paramètre d'URL simple : injecter une chaîne inoffensive dans un champ de recherche et voir si elle est renvoyée sans échappement. Vérifier dans quel contexte elle atterrit (HTML, attribut ou JavaScript) avant de conclure, car l'échappement dépend du contexte. Ne jamais utiliser de payload destructeur ni tester sur les données d'autres utilisateurs : un PoC minimal suffit pour le rapport.
+
+## 2026-11-18
+
+Sur un ESP32 alimenté par batterie, le deep sleep change tout : en veille profonde il consomme quelques microampères au lieu de dizaines de milliampères en marche. On l'utilise avec esp_deep_sleep_start(), après avoir choisi le réveil : timer (esp_sleep_enable_timer_wakeup) ou GPIO (toucher d'un bouton). Attention : au réveil, le programme redémarre depuis setup(), donc les variables en RAM sont perdues — on garde l'état important en RTC memory (RTC_DATA_ATTR) ou en NVS.
