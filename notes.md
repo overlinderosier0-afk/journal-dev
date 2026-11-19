@@ -240,3 +240,7 @@ En bug bounty, tester une XSS réfléchie commence par un paramètre d'URL simpl
 ## 2026-11-18
 
 Sur un ESP32 alimenté par batterie, le deep sleep change tout : en veille profonde il consomme quelques microampères au lieu de dizaines de milliampères en marche. On l'utilise avec esp_deep_sleep_start(), après avoir choisi le réveil : timer (esp_sleep_enable_timer_wakeup) ou GPIO (toucher d'un bouton). Attention : au réveil, le programme redémarre depuis setup(), donc les variables en RAM sont perdues — on garde l'état important en RTC memory (RTC_DATA_ATTR) ou en NVS.
+
+## 2026-11-19
+
+Quand un front React appelle une API sur un autre domaine et que le navigateur bloque la requête avec une erreur CORS, ce n'est pas l'API qui refuse : c'est le navigateur qui exige que le serveur autorise l'origine avec l'en-tête Access-Control-Allow-Origin. En dev, on contourne proprement avec le proxy de Vite (server.proxy) plutôt qu'en désactivant la sécurité du navigateur. Et côté serveur, on n'ouvre jamais Access-Control-Allow-Origin: * sur des routes qui utilisent des cookies ou des tokens.
