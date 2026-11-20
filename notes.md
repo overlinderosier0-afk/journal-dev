@@ -244,3 +244,7 @@ Sur un ESP32 alimenté par batterie, le deep sleep change tout : en veille profo
 ## 2026-11-19
 
 Quand un front React appelle une API sur un autre domaine et que le navigateur bloque la requête avec une erreur CORS, ce n'est pas l'API qui refuse : c'est le navigateur qui exige que le serveur autorise l'origine avec l'en-tête Access-Control-Allow-Origin. En dev, on contourne proprement avec le proxy de Vite (server.proxy) plutôt qu'en désactivant la sécurité du navigateur. Et côté serveur, on n'ouvre jamais Access-Control-Allow-Origin: * sur des routes qui utilisent des cookies ou des tokens.
+
+## 2026-11-20
+
+Une action sensible (changement de mot de passe, paiement, suppression) ne doit jamais passer par un simple lien GET : un site malveillant peut déclencher la requête à ton insu pendant que tu es connecté. Protège chaque formulaire avec un token anti-CSRF vérifié côté serveur, et pose tes cookies de session en SameSite=Lax. En test, essaie de rejouer la requête depuis une autre origine : si elle passe, la protection manque.
