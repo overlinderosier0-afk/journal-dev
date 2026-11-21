@@ -248,3 +248,7 @@ Quand un front React appelle une API sur un autre domaine et que le navigateur b
 ## 2026-11-20
 
 Une action sensible (changement de mot de passe, paiement, suppression) ne doit jamais passer par un simple lien GET : un site malveillant peut déclencher la requête à ton insu pendant que tu es connecté. Protège chaque formulaire avec un token anti-CSRF vérifié côté serveur, et pose tes cookies de session en SameSite=Lax. En test, essaie de rejouer la requête depuis une autre origine : si elle passe, la protection manque.
+
+## 2026-11-21
+
+Tester un upload de fichier en bug bounty : ne pas s'arrêter à l'extension. Essayer les doubles extensions (image.jpg.php), le content-type modifié, et vérifier ce que le serveur renvoie vraiment — le fichier est-il servi, renommé, exécuté ? Toujours avec un fichier inoffensif (texte ou image), jamais de shell : le but est de prouver l'impact, pas de compromettre le serveur.
