@@ -252,3 +252,7 @@ Une action sensible (changement de mot de passe, paiement, suppression) ne doit 
 ## 2026-11-21
 
 Tester un upload de fichier en bug bounty : ne pas s'arrêter à l'extension. Essayer les doubles extensions (image.jpg.php), le content-type modifié, et vérifier ce que le serveur renvoie vraiment — le fichier est-il servi, renommé, exécuté ? Toujours avec un fichier inoffensif (texte ou image), jamais de shell : le but est de prouver l'impact, pas de compromettre le serveur.
+
+## 2026-11-22
+
+Un JWT n'est pas un passeport sûr juste parce qu'il est signé : son contenu (payload) est lisible par n'importe qui, il ne faut jamais y mettre de secret. Côté serveur, il faut toujours vérifier la signature et la date d'expiration avant de faire confiance aux rôles ou à l'identité qu'il contient. Un token décodé côté client ne prouve rien — c'est le serveur qui tranche.
