@@ -256,3 +256,7 @@ Tester un upload de fichier en bug bounty : ne pas s'arrêter à l'extension. Es
 ## 2026-11-22
 
 Un JWT n'est pas un passeport sûr juste parce qu'il est signé : son contenu (payload) est lisible par n'importe qui, il ne faut jamais y mettre de secret. Côté serveur, il faut toujours vérifier la signature et la date d'expiration avant de faire confiance aux rôles ou à l'identité qu'il contient. Un token décodé côté client ne prouve rien — c'est le serveur qui tranche.
+
+## 2026-11-23
+
+Pour piloter un servo comme le MG90S, ce n'est pas la tension qui commande l'angle, c'est la largeur de l'impulsion PWM : environ 500 µs pour 0°, 1500 µs au centre, 2500 µs pour 180°, à répéter à 50 Hz. Sur ESP32, la fonction ledcWriteTone ne suffit pas : il faut régler la fréquence et la résolution du timer (par exemple 50 Hz, 16 bits) puis convertir l'angle en durée d'impulsion, sinon le servo tremble ou reste bloqué. Et surtout, le servo se nourrit d'une alimentation 5 V séparée : le régulateur de la carte ne fournit pas le courant de pointe au démarrage.
