@@ -260,3 +260,7 @@ Un JWT n'est pas un passeport sûr juste parce qu'il est signé : son contenu (p
 ## 2026-11-23
 
 Pour piloter un servo comme le MG90S, ce n'est pas la tension qui commande l'angle, c'est la largeur de l'impulsion PWM : environ 500 µs pour 0°, 1500 µs au centre, 2500 µs pour 180°, à répéter à 50 Hz. Sur ESP32, la fonction ledcWriteTone ne suffit pas : il faut régler la fréquence et la résolution du timer (par exemple 50 Hz, 16 bits) puis convertir l'angle en durée d'impulsion, sinon le servo tremble ou reste bloqué. Et surtout, le servo se nourrit d'une alimentation 5 V séparée : le régulateur de la carte ne fournit pas le courant de pointe au démarrage.
+
+## 2026-11-24
+
+Quand un bug apparaît d'un coup dans un projet et qu'on ne sait pas quel commit l'a introduit, git bisect est l'outil qu'il faut : on marque un commit sain (git bisect good) et un commit cassé (git bisect bad), puis Git fait une recherche dichotomique en ne demandant qu'à tester quelques commits. En une dizaine d'étapes, il pointe le coupable exact, sans relire tout l'historique à la main. Penser à lancer git bisect reset à la fin pour revenir sur sa branche.
