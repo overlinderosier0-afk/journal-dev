@@ -264,3 +264,7 @@ Pour piloter un servo comme le MG90S, ce n'est pas la tension qui commande l'ang
 ## 2026-11-24
 
 Quand un bug apparaît d'un coup dans un projet et qu'on ne sait pas quel commit l'a introduit, git bisect est l'outil qu'il faut : on marque un commit sain (git bisect good) et un commit cassé (git bisect bad), puis Git fait une recherche dichotomique en ne demandant qu'à tester quelques commits. En une dizaine d'étapes, il pointe le coupable exact, sans relire tout l'historique à la main. Penser à lancer git bisect reset à la fin pour revenir sur sa branche.
+
+## 2026-11-25
+
+En React, la prop key sert à identifier chaque élément d'une liste : sans elle, ou avec l'index du tableau comme key, React peut mélanger les états quand la liste change (tri, suppression, ajout). Mieux vaut utiliser un identifiant stable, comme un id unique. Une key bien choisie évite des bugs bizarres où un champ affiche la valeur d'un autre élément.
