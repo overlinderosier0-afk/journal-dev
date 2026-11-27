@@ -268,3 +268,7 @@ Quand un bug apparaît d'un coup dans un projet et qu'on ne sait pas quel commit
 ## 2026-11-25
 
 En React, la prop key sert à identifier chaque élément d'une liste : sans elle, ou avec l'index du tableau comme key, React peut mélanger les états quand la liste change (tri, suppression, ajout). Mieux vaut utiliser un identifiant stable, comme un id unique. Une key bien choisie évite des bugs bizarres où un champ affiche la valeur d'un autre élément.
+
+## 2026-11-27
+
+SSRF : quand une appli récupère une URL que tu lui fournis (avatar, aperçu de lien, webhook), elle peut être trompée pour appeler ses propres services internes (169.254.169.254 pour les métadonnées cloud, localhost, intranet). En bug bounty, teste avec une URL vers ton propre serveur pour confirmer que la requête sort bien du serveur, puis essaie les plages privées. Règle d'or : ne jamais cibler un service interne réel, une simple preuve de connexion suffit, et signale-le vite — une SSRF peut mener à une fuite de clés cloud.
